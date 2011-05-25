@@ -21,7 +21,7 @@ class Bag {
   size_type count (const value_type& target) const;
 
   //Modification member functions
-  bool erase_one (const value_type& target);
+  bool eraseOne (const value_type& target);
 
   size_type erase (const value_type& target);
 

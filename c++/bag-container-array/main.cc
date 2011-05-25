@@ -12,7 +12,7 @@ int main (int argc, char *argv[]) {
 
   std::cout << bag;
 
-  std::cout << bag.erase_one(26) << std::endl << bag;
+  std::cout << bag.eraseOne(26) << std::endl << bag;
 
   std::cout << bag.insert(40) << std::endl << bag;
 
@@ -20,7 +20,7 @@ int main (int argc, char *argv[]) {
 
   for (int i = 0; i < Bag::DEFAULT_CAPACITY; i += 2) {
     std::cout << "removing " << i << std::endl;
-    std::cout << bag.erase_one(i) << std::endl << bag;
+    std::cout << bag.eraseOne(i) << std::endl << bag;
   }
 
   for (int i = 0; i < 10; i++) {

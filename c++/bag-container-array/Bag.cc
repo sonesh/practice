@@ -17,7 +17,7 @@ Bag::size_type Bag::count (const value_type& target) const {
   return count;
 }
 
-bool Bag::erase_one (const value_type& target) {
+bool Bag::eraseOne (const value_type& target) {
 
   size_type i = 0;
 
@@ -78,10 +78,15 @@ std::ostream& operator << (std::ostream& outs, const Bag& bag) {
 
   Bag::size_type i;
   
+  if (bag.used_ == 0) {
+    outs << "Empty Bag!" << std::endl;
+    return outs;
+  }
+
   for (i = 0; i < bag.used_ - 1; i++)
     outs << bag.array_[i] << " ";
 
-  outs << bag.array_[i] << "\n";
+  outs << bag.array_[i] << std::endl;;
 
   return outs;
 }
