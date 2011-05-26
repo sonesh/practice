@@ -1,0 +1,53 @@
+template <class Item>
+void treeClear (BinaryTreeNode<Item>*& rootPtr) {
+  
+  if (rootPtr == NULL)
+    return;
+
+  treeClear(rootPtr->getLeft());
+  treeClear(rootPtr->getRight());
+  delete rootPtr;
+  rootPtr = NULL;
+}
+
+template <class Item>
+BinaryTreeNode<Item>* treeCopy (const BinaryTreeNode<Item>* rootPtr) {
+
+  if (rootPtr == NULL)
+    return NULL;
+
+  BinaryTreeNode<Item> *newRoot;
+  BinaryTreeNode<Item> *newLeft;
+  BinaryTreeNode<Item> *newRight;
+
+  newLeft = treeCopy(rootPtr->getLeft());
+  newRight = treeCopy(rootPtr->getRight());
+  newRoot = new BinaryTreeNode<Item>(rootPtr->getData(),
+                                     newLeft,
+                                     newRight);
+  return newRoot;
+}
+
+template <class Item>
+std::size_t treeSize (const BinaryTreeNode<Item>* rootPtr) {
+
+  std::size_t treeSize = 0;
+
+  if (rootPtr == NULL)
+    return 0;
+
+  return 1 + treeSize(rootPtr->getLeft()) + treeSize(rootPtr->getRight());
+}
+
+//In reverese/backward in-order
+template <class Item, class SizeType>
+void prettyPrint (const BinaryTreeNode<Item>* rootPtr, SizeType depth) {
+
+  if (rootPtr == NULL)
+    return;
+
+  prettyPrint(rootPtr->getRight(), depth + 1);
+  std::cout << std::setw(4*depth) << " ";
+  std::cout << rootPtr->getData() << std::endl;
+  prettyPrint(rootPtr->getLeft(), depth + 1);
+}
