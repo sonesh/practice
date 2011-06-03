@@ -1,0 +1,51 @@
+#include "binarytreenode.h"
+#include "binarytreenodeutils.h"
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main (int argc, char *argv[]) {
+
+  BinaryTreeNode *btNode1 = createNode(1);
+  BinaryTreeNode *btNode2 = createNode(2);
+  BinaryTreeNode *btNode3 = createNode(3);
+  BinaryTreeNode *btNode4 = createNode(4);
+  BinaryTreeNode *btNode5 = createNode(5);
+  
+  setLeft(btNode3, btNode4);
+  setRight(btNode2, btNode3);
+  setLeft(btNode1, btNode2);
+  setRight(btNode1, btNode5);
+
+  printf("btNode1=%p, left=%p, right=%p\n", 
+         btNode1, btNode1->left, btNode1->right);
+  printf("btNode2=%p, left=%p, right=%p\n", 
+         btNode2, btNode2->left, btNode2->right);
+  printf("btNode3=%p, left=%p, right=%p\n", 
+         btNode3, btNode3->left, btNode3->right);
+  printf("btNode4=%p, left=%p, right=%p\n", 
+         btNode4, btNode4->left, btNode4->right);
+  printf("btNode5=%p, left=%p, right=%p\n", 
+         btNode5, btNode5->left, btNode5->right);
+
+  prettyPrint(btNode1, 0);
+
+  printf("\ntreeSize = %d\n\n", treeSize(btNode1));
+
+  treeClear (&btNode1);
+  
+  /*
+  printf("btNode1=%p, left=%p, right=%p\n", 
+         btNode1, btNode1->left, btNode1->right);
+  */
+  printf("btNode2=%p, left=%p, right=%p\n", 
+         btNode2, btNode2->left, btNode2->right);
+  printf("btNode3=%p, left=%p, right=%p\n", 
+         btNode3, btNode3->left, btNode3->right);
+  printf("btNode4=%p, left=%p, right=%p\n", 
+         btNode4, btNode4->left, btNode4->right);
+  printf("btNode5=%p, left=%p, right=%p\n", 
+         btNode5, btNode5->left, btNode5->right);
+
+  return EXIT_SUCCESS;
+}

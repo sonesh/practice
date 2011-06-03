@@ -1,0 +1,9 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=0040118A
+eax=00000000 ebx=00D2A580 ecx=6115B320 edx=00000000 esi=00D2A589 edi=00000000
+ebp=0022CCF8 esp=0022CCC0 program=c:\Users\divya\practice\c\bintree-node\main.exe, pid 9576, thread main
+cs=001B ds=0023 es=0023 fs=003B gs=0000 ss=0023
+Stack trace:
+Frame     Function  Args
+0022CCF8  0040118A  (00000001, 00D2A520, 00D18510, 00008000)
+0022CD68  61006E73  (00000000, 0022CDA4, 61006720, 7FFDF000)
+End of stack trace
