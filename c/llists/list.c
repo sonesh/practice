@@ -148,6 +148,28 @@ void makeEmpty (List *list) {
   }
 }
 
+int hasCycle (const List *list) {
+  
+  Node *slowPtr = NULL;
+  Node *fastPtr = NULL;
+
+  if (list == NULL)
+    return 0;
+
+  slowPtr = list->head;
+  fastPtr = list->head;
+
+  while ((fastPtr != NULL) && (fastPtr->next != NULL)) {
+    slowPtr = slowPtr->next;
+    fastPtr = fastPtr->next->next;
+
+    if (slowPtr == fastPtr)
+      return 1;
+  }
+
+  return 0;
+}
+
 void reverseIteratively (List *list) {
 
   Node *previous = NULL;
@@ -218,12 +240,39 @@ void reverseRecursivelyInPlace (List *list) {
   reverseRecursivelyInPlaceHelper( &(list->head) );
 }
 
+Node *getHead (const List *list) {
+  
+  if (list == NULL || list->head == NULL)
+    return NULL;
+
+  return list->head;
+}
+
+Node* getLastNode (const List *list) {
+  
+  Node *current = NULL;
+
+  if (list == NULL || list->head == NULL)
+    return NULL;
+
+  current = list->head;
+  while (current->next != NULL)
+    current = current->next;
+
+  return current;
+}
+
 void printList (const List *list) {
 
   const Node *current = NULL;
 
   if (list == NULL)
     return;
+
+  if (hasCycle(list)) {
+    printf("List has cycle. Unable to print\n");
+    return;
+  }
 
   current = list->head;
 
