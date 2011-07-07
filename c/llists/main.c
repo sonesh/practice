@@ -9,8 +9,9 @@ int main (int argc, char *argv[]) {
 
   int i;
   int result;
-
+  Node *n = NULL;
   List *list = (List *) malloc (sizeof(List));
+
   if (list == NULL) {
     printf("main: malloc failed while creating list");
     return 0;
@@ -84,6 +85,17 @@ int main (int argc, char *argv[]) {
   printf("Removing duplicates\n");
   removeDups(list);
   printList(list);
+
+  if (hasCycle(list))
+    printf("Cycle found!\n");
+  else
+    printf("No cycle found\n");
+
+  printf("Creating cycle\n");
+  n = getLastNode(list);
+  setNodeNext(n, list->head);
+  printList(list);
+
 
   return 0;
 }

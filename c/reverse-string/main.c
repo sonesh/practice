@@ -1,5 +1,6 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 #define MAX_STR_LEN 256
 
@@ -41,7 +42,7 @@ int main (int argc, char *argv[]) {
 
   reverseString(buffer);
 
-  printf("Reversed string:\n%s", buffer);
+  printf("Reversed string:\n%s\n", buffer);
 
   return 0;
 }

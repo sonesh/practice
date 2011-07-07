@@ -23,11 +23,17 @@ void removeDups (List *list);
 
 void makeEmpty (List *list);
 
+int hasCycle (const List *list);
+
 void reverseIteratively (List *list);
 
 void reverseRecursively(List *list);
 
 void reverseRecursivelyInPlace (List *list);
+
+Node* getHead (const List *list);
+
+Node* getLastNode (const List *list);
 
 void printList (const List *list);
 
