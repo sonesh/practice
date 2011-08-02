@@ -2,3 +2,5 @@
 *.o
 #Ignore executables
 *.exe
+#Ignore Java class files
+*.class
