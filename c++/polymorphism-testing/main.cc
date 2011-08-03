@@ -41,6 +41,9 @@ int main (int argc, char *argv[]) {
   b->makeNoise();
   c->makeNoise();
 
+  b = c;
+  b->makeNoise();
+
   return EXIT_SUCCESS;
 
 }
