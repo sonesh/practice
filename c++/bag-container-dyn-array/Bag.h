@@ -46,6 +46,6 @@ class Bag {
 };
 
 //Non member functions for bag class
-Bag operator + (const Bag& other);
+Bag operator + (const Bag& b1, const Bag& b2);
 
 #endif
