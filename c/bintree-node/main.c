@@ -30,9 +30,19 @@ int main (int argc, char *argv[]) {
   printf("btNode5=%p, left=%p, right=%p, &btNode5 = %p\n", 
          btNode5, btNode5->left, btNode5->right, &btNode5);
 
+  printf("\n\n");
+
   prettyPrint(btNode1, 0);
 
   printf("\ntreeSize = %d\n\n", treeSize(btNode1));
+
+  printf("btNode1 height: %d\n", treeNodeHeight(btNode1));
+  printf("btNode2 height: %d\n", treeNodeHeight(btNode2));
+  printf("btNode3 height: %d\n", treeNodeHeight(btNode3));
+  printf("btNode4 height: %d\n", treeNodeHeight(btNode4));
+  printf("btNode5 height: %d\n", treeNodeHeight(btNode5));
+
+  printf("\n\n");
 
   treeClear (&btNode1);
   
