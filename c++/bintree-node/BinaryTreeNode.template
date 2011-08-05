@@ -39,6 +39,83 @@ std::size_t treeSize (const BinaryTreeNode<Item>* rootPtr) {
   return 1 + treeSize(rootPtr->getLeft()) + treeSize(rootPtr->getRight());
 }
 
+template <class Item>
+const BinaryTreeNode<Item>* getMinimum (const BinaryTreeNode<Item>* node) {
+  
+  if (node == NULL)
+    return NULL;
+
+  while (node->getLeft()) 
+    node = node->getLeft();
+  
+  return node;
+}
+
+template <class Item>
+const BinaryTreeNode<Item>* getSuccessor (const BinaryTreeNode<Item>* node) {
+
+  if (node == NULL)
+    return NULL;
+  
+  if (node->getRight())
+    return getMinimum(node->getRight());
+  
+  const BinaryTreeNode<Item>* parent = node->getParent();
+  while (parent && parent->getLeft() != node) {
+    node = parent;
+    parent = node->getParent();
+  }
+
+  return parent;
+}
+
+template <class Item>
+const BinaryTreeNode<Item>* findNode (const BinaryTreeNode<Item>* root, Item item) {
+
+  const BinaryTreeNode<Item>* node = root;
+  while (node != NULL && node->getData() != item)
+    if (item < node->getData())
+      node = node->getLeft();
+    else
+      node = node->getRight();
+  
+  return node;
+}
+
+template<class Item>
+void insertNode (BinaryTreeNode<Item>** root, Item item) {
+
+  if (root == NULL)
+    return;
+
+  BinaryTreeNode<Item>* parent = NULL;
+  BinaryTreeNode<Item>* current = *root;
+  BinaryTreeNode<Item>* newNode = new BinaryTreeNode<Item>(item);
+
+  //Find insertion location
+  while (current) {
+    parent = current;
+    if (item < current->getData())
+      current = current->getLeft();
+    else 
+      current = current->getRight();
+  }
+
+  //Insert
+  newNode->setParent(parent);
+  if (parent == NULL)                  //Empty Tree
+    *root = newNode;
+  else {
+    if (item < parent->getData()) 
+      parent->setLeft(newNode);
+    
+    else 
+      parent->setRight(newNode);
+  }
+    
+  return;
+}
+
 //In reverese/backward in-order
 template <class Item, class SizeType>
 void prettyPrint (const BinaryTreeNode<Item>* rootPtr, SizeType depth) {
@@ -50,4 +127,15 @@ void prettyPrint (const BinaryTreeNode<Item>* rootPtr, SizeType depth) {
   std::cout << std::setw(4*depth) << " ";
   std::cout << rootPtr->getData() << std::endl;
   prettyPrint(rootPtr->getLeft(), depth + 1);
+}
+
+template <class Item>
+void printNode (const BinaryTreeNode<Item>* node) {
+
+  if (node == NULL) {
+    std::cout << "Null Node" << std::endl;
+    return;
+  }
+
+  std::cout << "Node value: " << node->getData() << std::endl;
 }
