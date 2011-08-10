@@ -44,7 +44,7 @@ int getNextLargest (unsigned int n) {
 
   /* Shift all the other lower ones as right as possible*/
   int i;
-  for (i = bitPosition - 1; i >= onesCount; i--)  // First set zeroes
+  for (i = bitPosition - 1; i >= onesCount; i--)       // First set zeroes
     n = setBit(n, i, 0);
   for (i = onesCount - 1; i >= 0; i--)                 // Then set ones   
     n = setBit(n, i, 1);

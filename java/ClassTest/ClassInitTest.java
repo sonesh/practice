@@ -33,6 +33,11 @@ public class ClassInitTest {
     //Shouldn't trigger Parent class initialization
     //Parent p = null;
 
+    //Instance creation
+    //Should dynamically trigger Parent class initialization, after 
+    //  ClassInitTest has been fully initialized
+    Parent p = new Parent();
+
     //Assigning value to static non-final field
     //Should trigger Parent class initialization
     //Parent.nonFinalInt = 35;
@@ -42,8 +47,9 @@ public class ClassInitTest {
     //System.out.println(Parent.nonFinalInt);  
 
     //Accessing static final
-    //Should trigger Parent class initialization?
-    System.out.println(Parent.finalInt);  
+    //Doesn't initialize Parent class; maybe because Parent.finalInt is treated
+    //as constant symbol by the compiler
+    //System.out.println(Parent.finalInt);  
 
     System.out.println("main_END");
     return;
