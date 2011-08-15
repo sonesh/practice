@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Get next largest int after n with the same number of ones
 int getNextLargest (unsigned int n) {
  
   if (n <= 0) {
@@ -52,6 +53,7 @@ int getNextLargest (unsigned int n) {
   return n;
 }
 
+//Get the next smallest int before n with the same number of ones
 int getNextSmallest (unsigned int n) {
 
   if (n <= 0) {
